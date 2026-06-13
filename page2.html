@@ -253,9 +253,27 @@ th,td{
 </div>
 
 <!-- SAVE BUTTON -->
-<div style="text-align:center;">
-    <button class="save-btn" onclick="saveData()">💾 Save</button>
-</div>
+<button class="save-btn" onclick="saveData()">
+    💾 Save
+</button>
+
+<script>
+function saveData() {
+
+    let month = document.getElementById("month").value;
+
+    let data = {
+        career: document.getElementById("career").value,
+        planA: document.getElementById("planA").value,
+        planB: document.getElementById("planB").value,
+        date: document.getElementById("date").value
+    };
+
+    localStorage.setItem("CareerDiary_" + month, JSON.stringify(data));
+
+    alert(month + " ची डायरी सेव्ह झाली ✅");
+}
+</script>
 
 </body>
 </html>

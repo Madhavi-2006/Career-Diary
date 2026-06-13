@@ -129,7 +129,7 @@ th,td{
 <!-- MONTH -->
 <div class="section">
 <h3>◆ महिना निवडा</h3>
-<select id="month" style="width:120px; padding:5px; font-size:15px;">
+<select id="month" onchange="loadData()" style="width:120px; padding:5px; font-size:15px;">
     <option value="January">January</option>
     <option value="February">February</option>
     <option value="March">March</option>
@@ -149,28 +149,29 @@ th,td{
 <!-- NEW: CAREER OPTIONS UNDER MONTH -->
 <div class="section">
 <h3>◆ करिअर निश्चितीसाठी तपासलेले / अभ्यासलेले पर्याय</h3>
-<textarea></textarea>
+<textarea id="career"></textarea>
 </div>
+
 <div class="section">
 <h3>◆ वरील पर्यायांपैकी समुपदेशनानंतर निश्चित केलेले उद्दिष्ट</h3>
 
 <div class="plan">प्लॅन A</div>
-<textarea></textarea>
+<textarea id="planA"></textarea>
 
 <br>
 
 <div class="plan">प्लॅन B</div>
-<textarea></textarea>
+<textarea id="planB"></textarea>
 </div>
 
 <div class="section">
 <h3>◆ उद्दिष्ट प्राप्तीसाठी निश्चित केलेला कालावधी</h3>
-<input type="text">
+<input type="text" id="duration">
 </div>
 
 <div class="section">
 <h3>◆ वय वर्ष</h3>
-<input type="text">
+<input type="text" id="age">
 </div>
 
 <hr>
@@ -181,29 +182,29 @@ th,td{
 <p><b>या महिन्यामध्ये आत्मसात केलेले कौशल्य</b></p>
 
 <p>नाव :</p>
-<input type="text">
+<input type="text" id="skillName">
 
 <p>साध्य :</p>
-<input type="text">
+<input type="text" id="skillGoal">
 </div>
 
 <div class="section">
 <h3>◆ एक महिना - एक पुस्तक, होईल सुदृढ युवामस्तक</h3>
 
 <p>वाचलेल्या पुस्तकाचे नाव :</p>
-<input type="text">
+<input type="text" id="bookName">
 
 <p>सारांश :</p>
-<textarea></textarea>
+<textarea id="bookSummary"></textarea>
 </div>
 
 <div class="section">
 <h3>◆ वाचता पुस्तक, सातत्याने ज्ञान मिळे, वाचता मनुष्य जीवनकौशल्य उलगडे</h3>
 
 <p>भेट झालेल्या विशेष व्यक्तीचे नाव :</p>
-<input type="text">
+<input type="text" id="personName">
 
-<textarea></textarea>
+<textarea id="personNotes"></textarea>
 </div>
 
 <h2 style="text-align:center;">

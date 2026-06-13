@@ -259,9 +259,72 @@ th,td{
     💾 Save
 </button>
 <script>
+
 function saveData() {
-    alert("Save Working ✅");
+
+    let month = document.getElementById("month").value;
+
+    let data = {
+        career: document.getElementById("career").value,
+        planA: document.getElementById("planA").value,
+        planB: document.getElementById("planB").value,
+        duration: document.getElementById("duration").value,
+        age: document.getElementById("age").value,
+        skillName: document.getElementById("skillName").value,
+        skillGoal: document.getElementById("skillGoal").value,
+        bookName: document.getElementById("bookName").value,
+        bookSummary: document.getElementById("bookSummary").value,
+        personName: document.getElementById("personName").value,
+        personNotes: document.getElementById("personNotes").value
+    };
+
+    localStorage.setItem("CareerDiary_" + month, JSON.stringify(data));
+
+    alert(month + " Save Successful ✅");
 }
+
+function loadData() {
+
+    let month = document.getElementById("month").value;
+
+    let savedData = localStorage.getItem("CareerDiary_" + month);
+
+    if(savedData){
+
+        let data = JSON.parse(savedData);
+
+        document.getElementById("career").value = data.career || "";
+        document.getElementById("planA").value = data.planA || "";
+        document.getElementById("planB").value = data.planB || "";
+        document.getElementById("duration").value = data.duration || "";
+        document.getElementById("age").value = data.age || "";
+        document.getElementById("skillName").value = data.skillName || "";
+        document.getElementById("skillGoal").value = data.skillGoal || "";
+        document.getElementById("bookName").value = data.bookName || "";
+        document.getElementById("bookSummary").value = data.bookSummary || "";
+        document.getElementById("personName").value = data.personName || "";
+        document.getElementById("personNotes").value = data.personNotes || "";
+
+    } else {
+
+        document.getElementById("career").value = "";
+        document.getElementById("planA").value = "";
+        document.getElementById("planB").value = "";
+        document.getElementById("duration").value = "";
+        document.getElementById("age").value = "";
+        document.getElementById("skillName").value = "";
+        document.getElementById("skillGoal").value = "";
+        document.getElementById("bookName").value = "";
+        document.getElementById("bookSummary").value = "";
+        document.getElementById("personName").value = "";
+        document.getElementById("personNotes").value = "";
+    }
+}
+
+window.onload = loadData;
+
+document.getElementById("month").addEventListener("change", loadData);
+
 </script>
 
 

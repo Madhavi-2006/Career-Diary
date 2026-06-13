@@ -129,49 +129,47 @@ th,td{
 <!-- MONTH -->
 <div class="section">
 <h3>◆ महिना निवडा</h3>
-<select id="month" onchange="loadData()" style="width:120px; padding:5px; font-size:15px;">
-    <option value="January">January</option>
-    <option value="February">February</option>
-    <option value="March">March</option>
-    <option value="April">April</option>
-    <option value="May">May</option>
-    <option value="June">June</option>
-    <option value="July">July</option>
-    <option value="August">August</option>
-    <option value="September">September</option>
-    <option value="October">October</option>
-    <option value="November">November</option>
-    <option value="December">December</option>
+<select class="small-box">
+    <option>January</option>
+    <option>February</option>
+    <option>March</option>
+    <option>April</option>
+    <option>May</option>
+    <option>June</option>
+    <option>July</option>
+    <option>August</option>
+    <option>September</option>
+    <option>October</option>
+    <option>November</option>
+    <option>December</option>
 </select>
-    
 </div>
 
 <!-- NEW: CAREER OPTIONS UNDER MONTH -->
 <div class="section">
 <h3>◆ करिअर निश्चितीसाठी तपासलेले / अभ्यासलेले पर्याय</h3>
-<textarea id="career"></textarea>
+<textarea></textarea>
 </div>
-
 <div class="section">
 <h3>◆ वरील पर्यायांपैकी समुपदेशनानंतर निश्चित केलेले उद्दिष्ट</h3>
 
 <div class="plan">प्लॅन A</div>
-<textarea id="planA"></textarea>
+<textarea></textarea>
 
 <br>
 
 <div class="plan">प्लॅन B</div>
-<textarea id="planB"></textarea>
+<textarea></textarea>
 </div>
 
 <div class="section">
 <h3>◆ उद्दिष्ट प्राप्तीसाठी निश्चित केलेला कालावधी</h3>
-<input type="text" id="duration">
+<input type="text">
 </div>
 
 <div class="section">
 <h3>◆ वय वर्ष</h3>
-<input type="text" id="age">
+<input type="text">
 </div>
 
 <hr>
@@ -182,29 +180,29 @@ th,td{
 <p><b>या महिन्यामध्ये आत्मसात केलेले कौशल्य</b></p>
 
 <p>नाव :</p>
-<input type="text" id="skillName">
+<input type="text">
 
 <p>साध्य :</p>
-<input type="text" id="skillGoal">
+<input type="text">
 </div>
 
 <div class="section">
 <h3>◆ एक महिना - एक पुस्तक, होईल सुदृढ युवामस्तक</h3>
 
 <p>वाचलेल्या पुस्तकाचे नाव :</p>
-<input type="text" id="bookName">
+<input type="text">
 
 <p>सारांश :</p>
-<textarea id="bookSummary"></textarea>
+<textarea></textarea>
 </div>
 
 <div class="section">
 <h3>◆ वाचता पुस्तक, सातत्याने ज्ञान मिळे, वाचता मनुष्य जीवनकौशल्य उलगडे</h3>
 
 <p>भेट झालेल्या विशेष व्यक्तीचे नाव :</p>
-<input type="text" id="personName">
+<input type="text">
 
-<textarea id="personNotes"></textarea>
+<textarea></textarea>
 </div>
 
 <h2 style="text-align:center;">
@@ -234,99 +232,81 @@ th,td{
 </tr>
 
 <tr>
-<td><input type="number"></td>
-<td><input type="number"></td>
-<td><input type="number"></td>
+<td><input type="number" class="num" oninput="updateTotals()"></td>
+<td><input type="number" class="num" oninput="updateTotals()"></td>
+<td><input type="number" class="num" readonly></td>
 
-<td><input type="number"></td>
-<td><input type="number"></td>
-<td><input type="number"></td>
+<td><input type="number" class="num" oninput="updateTotals()"></td>
+<td><input type="number" class="num" oninput="updateTotals()"></td>
+<td><input type="number" class="num" readonly></td>
 
-<td><input type="number"></td>
-<td><input type="number"></td>
-<td><input type="number"></td>
+<td><input type="number" class="num" oninput="updateTotals()"></td>
+<td><input type="number" class="num" oninput="updateTotals()"></td>
+<td><input type="number" class="num" readonly></td>
 </tr>
 
 </table>
 
 <!-- DATE LEFT SIDE -->
 <div class="date-box">
-<p><b>Date :</b> <input type="date"></p>
+<p><b>Date :</b><input type="number" class="num" oninput="updateTotals()"> </p>
 </div>
 
 <!-- SAVE BUTTON -->
-<button class="save-btn" onclick="saveData()">
-    💾 Save
-</button>
+<div style="text-align:center;">
+    <button class="save-btn" onclick="saveData()">💾 Save</button>
+</div>
+
 <script>
+function updateTotals(){
 
-function saveData() {
+    let inputs = document.querySelectorAll("input.num");
 
-    let month = document.getElementById("month").value;
+    for(let i = 0; i < inputs.length; i += 3){
 
-    let data = {
-        career: document.getElementById("career").value,
-        planA: document.getElementById("planA").value,
-        planB: document.getElementById("planB").value,
-        duration: document.getElementById("duration").value,
-        age: document.getElementById("age").value,
-        skillName: document.getElementById("skillName").value,
-        skillGoal: document.getElementById("skillGoal").value,
-        bookName: document.getElementById("bookName").value,
-        bookSummary: document.getElementById("bookSummary").value,
-        personName: document.getElementById("personName").value,
-        personNotes: document.getElementById("personNotes").value
-    };
+        let a = Number(inputs[i].value) || 0;
+        let b = Number(inputs[i+1].value) || 0;
 
-    localStorage.setItem("CareerDiary_" + month, JSON.stringify(data));
-
-    alert(month + " Save Successful ✅");
-}
-
-function loadData() {
-
-    let month = document.getElementById("month").value;
-
-    let savedData = localStorage.getItem("CareerDiary_" + month);
-
-    if(savedData){
-
-        let data = JSON.parse(savedData);
-
-        document.getElementById("career").value = data.career || "";
-        document.getElementById("planA").value = data.planA || "";
-        document.getElementById("planB").value = data.planB || "";
-        document.getElementById("duration").value = data.duration || "";
-        document.getElementById("age").value = data.age || "";
-        document.getElementById("skillName").value = data.skillName || "";
-        document.getElementById("skillGoal").value = data.skillGoal || "";
-        document.getElementById("bookName").value = data.bookName || "";
-        document.getElementById("bookSummary").value = data.bookSummary || "";
-        document.getElementById("personName").value = data.personName || "";
-        document.getElementById("personNotes").value = data.personNotes || "";
-
-    } else {
-
-        document.getElementById("career").value = "";
-        document.getElementById("planA").value = "";
-        document.getElementById("planB").value = "";
-        document.getElementById("duration").value = "";
-        document.getElementById("age").value = "";
-        document.getElementById("skillName").value = "";
-        document.getElementById("skillGoal").value = "";
-        document.getElementById("bookName").value = "";
-        document.getElementById("bookSummary").value = "";
-        document.getElementById("personName").value = "";
-        document.getElementById("personNotes").value = "";
+        inputs[i+2].value = a + b;
     }
 }
-
-window.onload = loadData;
-
-document.getElementById("month").addEventListener("change", loadData);
-
 </script>
 
+<script>
+function saveData(){
+
+    let inputs = document.querySelectorAll("input, textarea, select");
+
+    let data = [];
+
+    inputs.forEach((el)=>{
+        data.push(el.value);
+    });
+
+    localStorage.setItem("careerData", JSON.stringify(data));
+
+    alert("Data Saved Successfully!");
+}
+</script>
+
+<script>
+window.onload = function(){
+
+    let data = JSON.parse(localStorage.getItem("careerData"));
+
+    if(!data) return;
+
+    let inputs = document.querySelectorAll("input, textarea, select");
+
+    inputs.forEach((el, i)=>{
+        if(data[i] !== undefined){
+            el.value = data[i];
+        }
+    });
+
+    updateTotals();
+}
+</script>
 
 </body>
 </html>

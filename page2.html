@@ -248,8 +248,36 @@ th,td{
 </table>
 
 <!-- DATE LEFT SIDE -->
-<input type="date">
+<div class="date-box">
+    <label>दिनांक</label>
+    <input type="date">
+</div>
 
+.date-box{
+    width:220px;   /* small box */
+}
+
+.date-box label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:5px;
+    color:#333;
+}
+
+.date-box input{
+    width:100%;
+    padding:8px;
+    border:2px solid #ddd;
+    border-radius:8px;
+    font-size:14px;
+    background:#fff;
+}
+
+/* calendar focus effect */
+.date-box input:focus{
+    border-color:#f97316;
+    outline:none;
+}
 <!-- SAVE BUTTON -->
 <div style="text-align:center;">
     <button class="save-btn" onclick="saveData()">💾 Save</button>

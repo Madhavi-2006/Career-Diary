@@ -256,8 +256,8 @@ th,td{
 <button class="save-btn" onclick="saveData()">
     💾 Save
 </button>
-
 <script>
+
 function saveData() {
 
     let month = document.getElementById("month").value;
@@ -271,9 +271,39 @@ function saveData() {
 
     localStorage.setItem("CareerDiary_" + month, JSON.stringify(data));
 
-    alert(month + " ची डायरी सेव्ह झाली ✅");
+    alert(month + " Save Successful ✅");
 }
+
+function loadData() {
+
+    let month = document.getElementById("month").value;
+
+    let savedData = localStorage.getItem("CareerDiary_" + month);
+
+    if(savedData){
+
+        let data = JSON.parse(savedData);
+
+        document.getElementById("career").value = data.career || "";
+        document.getElementById("planA").value = data.planA || "";
+        document.getElementById("planB").value = data.planB || "";
+        document.getElementById("date").value = data.date || "";
+
+    }else{
+
+        document.getElementById("career").value = "";
+        document.getElementById("planA").value = "";
+        document.getElementById("planB").value = "";
+        document.getElementById("date").value = "";
+    }
+}
+
+window.onload = loadData;
+
+document.getElementById("month").addEventListener("change", loadData);
+
 </script>
+
 
 </body>
 </html>
